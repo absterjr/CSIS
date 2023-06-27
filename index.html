@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSIS Home</title>
+  <style>
+    body {
+      background-image: url('home_bck.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      opacity: 01;
+    }
+    
+    .container {
+      width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 5px;
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    input[type="text"], input[type="password"], select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    
+    input[type="text"]:focus, input[type="password"]:focus, select:focus {
+      outline: none;
+      border-color: #2196F3;
+    }
+    
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fdfdfd;
+      background-color: #5471f3;
+      cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #276ca5;
+    }
+    .navbar {
+        background-image: url("home_bck.jpg");
+      color: #fff;
+      padding: 30px;
+    }
+    
+    .navbar-title {
+      left:10px;
+    }
+    
+    .navbar-menu {
+   right: 10px;
+
+    }
+    
+    .dropdown {
+      position: absolute;
+      right: 150px;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 125px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 12px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const subsidiarySelect = document.getElementById('subsidiary');
+      const mineAreaSelect = document.getElementById('mine-area');
+      const usernameSelect = document.getElementById('username');
+      
+      const mineAreaOptions = {
+        'Subsidiary 1': ['Mine/Area 1', 'Mine/Area 2', 'Mine/Area 3'],
+        'Subsidiary 2': ['Mine/Area 4', 'Mine/Area 5', 'Mine/Area 6'],
+        'Subsidiary 3': ['Mine/Area 7', 'Mine/Area 8', 'Mine/Area 9']
+      };
+      
+      const usernameOptions = {
+        'Mine/Area 1': ['User 1', 'User 2', 'User 3'],
+        'Mine/Area 2': ['User 4', 'User 5', 'User 6'],
+        'Mine/Area 3': ['User 7', 'User 8', 'User 9'],
+        'Mine/Area 4': ['User 10', 'User 11', 'User 12'],
+        'Mine/Area 5': ['User 13', 'User 14', 'User 15'],
+        'Mine/Area 6': ['User 16', 'User 17', 'User 18'],
+        'Mine/Area 7': ['User 19', 'User 20', 'User 21'],
+        'Mine/Area 8': ['User 22', 'User 23', 'User 24'],
+        'Mine/Area 9': ['User 25', 'User 26', 'User 27']
+      };
+      
+      function populateOptions(selectElement, optionsArray) {
+        selectElement.innerHTML = '';
+        for (let option of optionsArray) {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option;
+          selectElement.appendChild(optionElement);
+        }
+      }
+      
+      subsidiarySelect.addEventListener('change', (event) => {
+        const selectedSubsidiary = event.target.value;
+        if (selectedSubsidiary in mineAreaOptions) {
+          populateOptions(mineAreaSelect, mineAreaOptions[selectedSubsidiary]);
+          populateOptions(usernameSelect, []);
+        } else {
+          populateOptions(mineAreaSelect, []);
+          populateOptions(usernameSelect, []);
+        }
+      });
+      
+      mineAreaSelect.addEventListener('change', (event) => {
+        const selectedMineArea = event.target.value;
+        if (selectedMineArea in usernameOptions) {
+          populateOptions(usernameSelect, usernameOptions[selectedMineArea]);
+        } else {
+          populateOptions(usernameSelect, []);
+        }
+      });
+      
+      const form = document.getElementById('login-form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const selectedSubsidiary = subsidiarySelect.value;
+        const selectedMineArea = mineAreaSelect.value;
+        const selectedUsername = usernameSelect.value;
+        const password = document.getElementById('password').value;
+        
+        // Dummy authentication check, replace with your own logic
+        if (selectedSubsidiary && selectedMineArea && selectedUsername && password) {
+          // Authentication successful, redirect to the home page
+          window.location.href = 'home.html';
+        } else {
+          alert('Please fill in all the required fields.');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-title">
+      <h3>CIL: Centralised Safety Information System</h3>
+    </div>
+    <div class="navbar-menu">
+      <div class="dropdown">
+        <button class="dropbtn">Circulars</button>
+        <div class="dropdown-content">
+          <a href="#">Circular 1</a>
+          <a href="#">Circular 2</a>
+          <a href="#">Circular 3</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Welcome</h1>
+    <form id="login-form">
+      <p>
+        <label for="subsidiary">Subsidiary:</label>
+        <select id="subsidiary" required>
+          <option value="">Select Subsidiary</option>
+          <option value="Subsidiary 1">Subsidiary 1</option>
+          <option value="Subsidiary 2">Subsidiary 2</option>
+          <option value="Subsidiary 3">Subsidiary 3</option>
+        </select>
+      </p>
+      <p>
+        <label for="mine-area">Mine/Area/SubHQ:</label>
+        <select id="mine-area" required>
+          <option value="">Select Mine/Area/SubHQ</option>
+        </select>
+      </p>
+      <p>
+        <label for="username">Username:</label>
+        <select id="username" required>
+          <option value="">Select Username</option>
+        </select>
+      </p>
+      <p>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </p>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>
