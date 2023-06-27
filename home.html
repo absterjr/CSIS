@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -37,6 +38,39 @@
       text-decoration: none;
     }
     
+    .user-icon {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      top: 60px;
+      right: 0;
+    }
+    
+    .user-icon:hover .dropdown-menu {
+      display: block;
+    }
+    
+    .dropdown-menu a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: #f1f1f1;
+    }
+    
     .image-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -56,6 +90,7 @@
       object-fit: cover;
       transition: transform 0.3s ease-in-out;
     }
+    
     .image-container:hover img {
       transform: scale(1.1);
     }
@@ -84,71 +119,76 @@
       <h3>CIL: Centralised Safety Information System</h3>
     </div>
     <div class="navbar-menu">
-      <a href="index.html">Logout</a>
-      <a href="#">Change Password</a>
+      <div class="user-icon">
+        <i class="fas fa-portrait" style="font-size: 36px;"></i>
+        <div class="dropdown-menu">
+          <a href="index.html">Logout</a>
+          <a href="#">Change Password</a>
+        </div>
+      </div>
     </div>
   </div>
   
   <div class="image-gallery">
     <div class="image-container">
-        <a href="reports.html">
-      <img src="report.png" alt="Image 1">
-      <div class="image-name">Reports</div>
-    </a>
-    </div>
-    <div class="image-container">
-        <a href="uploads.html">
-      <img src="Upload.jpg" alt="Image 2">
-      <div class="image-name">Uploads</div>
-    </a>
-    </div>
-    <div class="image-container">
-        <a href ="datafromsub.html">
-      <img src="data_sub.jpeg" alt="Image 3">
-      <div class="image-name">Data From Subsidiaries</div>
-    </a>
-    </div>
-    <div class="image-container">
-        <a href = "bestpractices.html">
-      <img src="innovation.jpeg" alt="Image 4">
-      <div class="image-name">Best Practices and Innovation</div>
+      <a href="reports.html">
+        <img src="report.png" alt="Image 1">
+        <div class="image-name">Reports</div>
       </a>
     </div>
     <div class="image-container">
-        <a href="edsafetysection.html">
-      <img src="edsafety.jpg" alt="Image 5">
-      <div class="image-name">ED Safety Section</div>
-    </a>
+      <a href="uploads.html">
+        <img src="Upload.jpg" alt="Image 2">
+        <div class="image-name">Uploads</div>
+      </a>
     </div>
     <div class="image-container">
-        <a href="edguidelines.html">
-      <img src="edguid.png" alt="Image 6">
-      <div class="image-name">ED Guidelines</div>
-    </a>
+      <a href="datafromsub.html">
+        <img src="data_sub.jpeg" alt="Image 3">
+        <div class="image-name">Data From Subsidiaries</div>
+      </a>
     </div>
     <div class="image-container">
-        <a href="einspection.html">
-      <img src="einspect.jpg" alt="Image 7">
-      <div class="image-name">eINSPECTION</div>
-    </a>
+      <a href="bestpractices.html">
+        <img src="innovation.jpeg" alt="Image 4">
+        <div class="image-name">Best Practices and Innovation</div>
+      </a>
     </div>
     <div class="image-container">
-        <a href="starmine.html">
-      <img src="star.jpg" alt="Image 8">
-      <div class="image-name">Star Mines</div>
-    </a>
+      <a href="edsafetysection.html">
+        <img src="edsafety.jpg" alt="Image 5">
+        <div class="image-name">ED Safety Section</div>
+      </a>
     </div>
     <div class="image-container">
-        <a href="eaudit.html">
-      <img src="eaudit.jpg" alt="Image 9">
-      <div class="image-name">eAudit</div>
-    </a>
+      <a href="edguidelines.html">
+        <img src="edguid.png" alt="Image 6">
+        <div class="image-name">ED Guidelines</div>
+      </a>
     </div>
     <div class="image-container">
-        <a href="eviolation.html">
-      <img src="eviolate.jpg" alt="Image 10">
-      <div class="image-name">eViolation</div>
-    </a>
+      <a href="einspection.html">
+        <img src="einspect.jpg" alt="Image 7">
+        <div class="image-name">eINSPECTION</div>
+      </a>
+    </div>
+    <div class="image-container">
+      <a href="starmine.html">
+        <img src="star.jpg" alt="Image 8">
+        <div class="image-name">Star Mines</div>
+      </a>
+    </div>
+    <div class="image-container">
+      <a href="eaudit.html">
+        <img src="eaudit.jpg" alt="Image 9">
+        <div class="image-name">eAudit</div>
+      </a>
+    </div>
+    <div class="image-container">
+      <a href="eviolation.html">
+        <img src="eviolate.jpg" alt="Image 10">
+        <div class="image-name">eViolation</div>
+      </a>
     </div>
   </div>
 </body>
