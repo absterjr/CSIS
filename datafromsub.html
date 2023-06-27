@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CIL: Centralised Safety Information System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Styles for the navbar and dropdown menu */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-title {
+      margin-left: 20px;
+      font-size: 18px;
+    }
+
+    .navbar-menu {
+      margin-right: 20px;
+    }
+
+    .navbar-menu a {
+      color: #fff;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    .user-icon {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 100px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      top: 35px;
+      right: 0;
+    }
+
+    .user-icon:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: flex;
+      cursor: pointer;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Styles for the headings and subtopics */
+    .heading {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .subtopic {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+    /* Styles for the tables and download buttons */
+    .table-container {
+      margin-top: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .download-button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Theme colors */
+    .rescue-theme {
+      background-color: #d4f0d4;
+    }
+
+    .mines-theme {
+      background-color: #d4d4f0;
+    }
+
+    .budget-theme {
+      background-color: #f0d4d4;
+    }
+
+    .pme-theme {
+      background-color: #f0f0d4;
+    }
+    .content-section {
+    padding-top: 80px; /* Adjust this value as needed */
+  }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-title">
+      <h3>CIL: Centralised Safety Information System</h3>
+    </div>
+    <div class="navbar-menu">
+      <div class="user-icon">
+        <i class="fas fa-portrait" style="font-size: 36px;"></i>
+        <div class="dropdown-menu">
+          <a href="index.html">Logout</a>
+          <a href="changepassword.html">Change Password</a>
+        </div>
+      </div>
+      <a href="home.html">Home</a>
+    </div>
+  </div>
+  <div class="content-section">
+  <div class="heading rescue-theme">
+    Rescue Services
+  </div>
+  <div class="subtopic" onclick="toggleTable('rescue-sub1', 'rescue-download1')">Mine Rescue Station/RR/RRRT</div>
+  <div class="subtopic" onclick="toggleTable('rescue-sub2', 'rescue-download2')">Manpower for Rescue Services</div>
+  <div class="subtopic" onclick="toggleTable('rescue-sub3', 'rescue-download3')">Self Contained Breathing Apparatus</div>
+  <div class="table-container">
+    <table id="rescue-sub1" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="rescue-download1" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="rescue-sub2" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="rescue-download2" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="rescue-sub3" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="rescue-download3" style="display: none;">Download</button>
+  </div>
+
+  <div class="heading mines-theme">
+    Mines Data
+  </div>
+  <div class="subtopic" onclick="toggleTable('mines-sub1', 'mines-download1')">OC Data</div>
+  <div class="subtopic" onclick="toggleTable('mines-sub2', 'mines-download2')">UG Data</div>
+  <div class="subtopic" onclick="toggleTable('mines-sub3', 'mines-download3')">ISO Inspection Reports</div>
+  <div class="table-container">
+    <table id="mines-sub1" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="mines-download1" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="mines-sub2" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="mines-download2" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="mines-sub3" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="mines-download3" style="display: none;">Download</button>
+  </div>
+
+  <div class="heading budget-theme">
+    Budget
+  </div>
+  <div class="subtopic" onclick="toggleTable('budget-sub1', 'budget-download1')">Capital Budget</div>
+  <div class="subtopic" onclick="toggleTable('budget-sub2', 'budget-download2')">Revenue Budget</div>
+  <div class="subtopic" onclick="toggleTable('budget-sub3', 'budget-download3')">Capital Expenditure Major Heads</div>
+  <div class="subtopic" onclick="toggleTable('budget-sub4', 'budget-download4')">Revenue Expenditure Major Heads</div>
+  <div class="table-container">
+    <table id="budget-sub1" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="budget-download1" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="budget-sub2" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="budget-download2" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="budget-sub3" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="budget-download3" style="display: none;">Download</button>
+  </div>
+  <div class="table-container">
+    <table id="budget-sub4" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="budget-download4" style="display: none;">Download</button>
+  </div>
+
+  <div class="heading pme-theme">
+    PME
+  </div>
+  <div class="subtopic" onclick="toggleTable('pme-sub1', 'pme-download1')">Organization and Infrastructure for PME Centres</div>
+  <div class="table-container">
+    <table id="pme-sub1" style="display: none;">
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+          <td>Data 3</td>
+        </tr>
+        <tr>
+          <td>Data 4</td>
+          <td>Data 5</td>
+          <td>Data 6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="download-button" id="pme-download1" style="display: none;">Download</button>
+  </div>
+</div>
+
+  <script>
+    function toggleTable(tableId, downloadId) {
+      var table = document.getElementById(tableId);
+      var downloadButton = document.getElementById(downloadId);
+      if (table.style.display === "none") {
+        table.style.display = "table";
+        downloadButton.style.display = "block";
+      } else {
+        table.style.display = "none";
+        downloadButton.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
