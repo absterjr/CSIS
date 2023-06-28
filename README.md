@@ -44,4 +44,4 @@ This project is licensed under the [MIT License](LICENSE).
 - Special thanks to the contributors and team members who have contributed to the project.
 
 
-[PREVIEW](https://absterjr.github.io/CSIS/home.html)
+[PREVIEW](https://absterjr.github.io/CSIS/index.html)
