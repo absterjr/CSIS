@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<title>Data From Subsidiaries</title>
 <head>
-  <title>Data From Subsidiaries</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     /* Styles for the navbar and dropdown menu */
@@ -43,7 +45,8 @@
       position: absolute;
       background-color: #f9f9f9;
       min-width: 100px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
       top: 35px;
       right: 0;
     }
@@ -66,21 +69,21 @@
 
     /* Styles for the headings and subtopics */
     .heading {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-  .subtopic {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-left: 20px;
-    margin-top: 5px;
-    cursor: pointer;
-  }
+    .subtopic {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-left: 20px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
 
     /* Styles for the tables and download buttons */
     .table-container {
@@ -131,11 +134,13 @@
     .pme-theme {
       background-color: #f0f0d4;
     }
+
     .content-section {
-    padding-top: 80px; /* Adjust this value as needed */
-  }
+      padding-top: 80px; /* Adjust this value as needed */
+    }
   </style>
 </head>
+
 <body>
   <div class="navbar">
     <div class="navbar-title">
@@ -152,311 +157,481 @@
       <a href="home.html">Home</a>
     </div>
   </div>
+
   <div class="content-section">
-  <div class="heading rescue-theme">
-    Rescue Services
-  </div>
-  <div class="subtopic" onclick="toggleTable('rescue-sub1', 'rescue-download1')">Mine Rescue Station/RR/RRRT</div>
-  <div class="subtopic" onclick="toggleTable('rescue-sub2', 'rescue-download2')">Manpower for Rescue Services</div>
-  <div class="subtopic" onclick="toggleTable('rescue-sub3', 'rescue-download3')">Self Contained Breathing Apparatus</div>
-  <div class="table-container">
-    <table id="rescue-sub1" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="rescue-download1" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="rescue-sub2" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="rescue-download2" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="rescue-sub3" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="rescue-download3" style="display: none;">Download</button>
-  </div>
+    <div class="heading rescue-theme" onclick="toggleSubtopics('rescueSubtopics')">
+      Rescue Services <i class="fas fa-chevron-down"></i>
+    </div>
+    <div id="rescueSubtopics" style="display: none;">
+      <div class="subtopic">
+        Mine Rescue Station/RR/RRRT
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table1')">View</button>
+          <button class="create-button" onclick="toggleForm('form1')">Create</button>
+        </div>
+        <div id="table1" style="display: none;">
+          <!-- Dummy table for Mine Rescue Station/RR/RRRT -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form1" style="display: none;">
+          <!-- Form for Mine Rescue Station/RR/RRRT -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        Manpower for Rescue Services
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table2')">View</button>
+          <button class="create-button" onclick="toggleForm('form2')">Create</button>
+        </div>
+        <div id="table2" style="display: none;">
+          <!-- Dummy table for Manpower for Rescue Services -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form2" style="display: none;">
+          <!-- Form for Manpower for Rescue Services -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        Self Contained Breathing Apparatus
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table3')">View</button>
+          <button class="create-button" onclick="toggleForm('form3')">Create</button>
+        </div>
+        <div id="table3" style="display: none;">
+          <!-- Dummy table for Self Contained Breathing Apparatus -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form3" style="display: none;">
+          <!-- Form for Self Contained Breathing Apparatus -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-  <div class="heading mines-theme">
-    Mines Data
-  </div>
-  <div class="subtopic" onclick="toggleTable('mines-sub1', 'mines-download1')">OC Data</div>
-  <div class="subtopic" onclick="toggleTable('mines-sub2', 'mines-download2')">UG Data</div>
-  <div class="subtopic" onclick="toggleTable('mines-sub3', 'mines-download3')">ISO Inspection Reports</div>
-  <div class="table-container">
-    <table id="mines-sub1" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="mines-download1" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="mines-sub2" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="mines-download2" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="mines-sub3" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="mines-download3" style="display: none;">Download</button>
-  </div>
+    <div class="heading mines-theme" onclick="toggleSubtopics('minesSubtopics')">
+      Mines Data <i class="fas fa-chevron-down"></i>
+    </div>
+    <div id="minesSubtopics" style="display: none;">
+      <div class="subtopic">
+        OC Data
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table4')">View</button>
+          <button class="create-button" onclick="toggleForm('form4')">Create</button>
+        </div>
+        <div id="table4" style="display: none;">
+          <!-- Dummy table for OC Data -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form4" style="display: none;">
+          <!-- Form for OC Data -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        UG Data
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table5')">View</button>
+          <button class="create-button" onclick="toggleForm('form5')">Create</button>
+        </div>
+        <div id="table5" style="display: none;">
+          <!-- Dummy table for UG Data -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form5" style="display: none;">
+          <!-- Form for UG Data -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        ISO Inspection Reports
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table6')">View</button>
+          <button class="create-button" onclick="toggleForm('form6')">Create</button>
+        </div>
+        <div id="table6" style="display: none;">
+          <!-- Dummy table for ISO Inspection Reports -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form6" style="display: none;">
+          <!-- Form for ISO Inspection Reports -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-  <div class="heading budget-theme">
-    Budget
-  </div>
-  <div class="subtopic" onclick="toggleTable('budget-sub1', 'budget-download1')">Capital Budget</div>
-  <div class="subtopic" onclick="toggleTable('budget-sub2', 'budget-download2')">Revenue Budget</div>
-  <div class="subtopic" onclick="toggleTable('budget-sub3', 'budget-download3')">Capital Expenditure Major Heads</div>
-  <div class="subtopic" onclick="toggleTable('budget-sub4', 'budget-download4')">Revenue Expenditure Major Heads</div>
-  <div class="table-container">
-    <table id="budget-sub1" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="budget-download1" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="budget-sub2" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="budget-download2" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="budget-sub3" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="budget-download3" style="display: none;">Download</button>
-  </div>
-  <div class="table-container">
-    <table id="budget-sub4" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="budget-download4" style="display: none;">Download</button>
-  </div>
+    <div class="heading budget-theme" onclick="toggleSubtopics('budgetSubtopics')">
+      Budget <i class="fas fa-chevron-down"></i>
+    </div>
+    <div id="budgetSubtopics" style="display: none;">
+      <div class="subtopic">
+        Capital Budget
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table7')">View</button>
+          <button class="create-button" onclick="toggleForm('form7')">Create</button>
+        </div>
+        <div id="table7" style="display: none;">
+          <!-- Dummy table for Capital Budget -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form7" style="display: none;">
+          <!-- Form for Capital Budget -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        Revenue Budget
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table8')">View</button>
+          <button class="create-button" onclick="toggleForm('form8')">Create</button>
+        </div>
+        <div id="table8" style="display: none;">
+          <!-- Dummy table for Revenue Budget -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form8" style="display: none;">
+          <!-- Form for Revenue Budget -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        Capital Expenditure Major Heads
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table9')">View</button>
+          <button class="create-button" onclick="toggleForm('form9')">Create</button>
+        </div>
+        <div id="table9" style="display: none;">
+          <!-- Dummy table for Capital Expenditure Major Heads -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form9" style="display: none;">
+          <!-- Form for Capital Expenditure Major Heads -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="subtopic">
+        Revenue Expenditure Major Heads
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table10')">View</button>
+          <button class="create-button" onclick="toggleForm('form10')">Create</button>
+        </div>
+        <div id="table10" style="display: none;">
+          <!-- Dummy table for Revenue Expenditure Major Heads -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form10" style="display: none;">
+          <!-- Form for Revenue Expenditure Major Heads -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-  <div class="heading pme-theme">
-    PME
+    <div class="heading pme-theme" onclick="toggleSubtopics('pmeSubtopics')">
+      PME <i class="fas fa-chevron-down"></i>
+    </div>
+    <div id="pmeSubtopics" style="display: none;">
+      <div class="subtopic">
+        Organization and Infrastructure for PME Centres
+        <div class="button-container">
+          <button class="view-button" onclick="toggleTable('table11')">View</button>
+          <button class="create-button" onclick="toggleForm('form11')">Create</button>
+        </div>
+        <div id="table11" style="display: none;">
+          <!-- Dummy table for Organization and Infrastructure for PME Centres -->
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="download-button">Download</button>
+        </div>
+        <div id="form11" style="display: none;">
+          <!-- Form for Organization and Infrastructure for PME Centres -->
+          <form>
+            <!-- Input fields for form -->
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="subtopic" onclick="toggleTable('pme-sub1', 'pme-download1')">Organization and Infrastructure for PME Centres</div>
-  <div class="table-container">
-    <table id="pme-sub1" style="display: none;">
-      <thead>
-        <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-          <td>Data 3</td>
-        </tr>
-        <tr>
-          <td>Data 4</td>
-          <td>Data 5</td>
-          <td>Data 6</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="download-button" id="pme-download1" style="display: none;">Download</button>
-  </div>
-</div>
 
   <script>
-    function toggleTable(tableId, downloadId) {
+    // Function to toggle subtopics
+    function toggleSubtopics(subtopicId) {
+      var subtopics = document.getElementById(subtopicId);
+      subtopics.style.display = subtopics.style.display === "none" ? "block" : "none";
+    }
+
+    // Function to toggle tables
+    function toggleTable(tableId) {
       var table = document.getElementById(tableId);
-      var downloadButton = document.getElementById(downloadId);
-      if (table.style.display === "none") {
-        table.style.display = "table";
-        downloadButton.style.display = "block";
-      } else {
-        table.style.display = "none";
-        downloadButton.style.display = "none";
-      }
+      table.style.display = table.style.display === "none" ? "block" : "none";
+    }
+
+    // Function to toggle forms
+    function toggleForm(formId) {
+      var form = document.getElementById(formId);
+      form.style.display = form.style.display === "none" ? "block" : "none";
     }
   </script>
 </body>
+
 </html>
