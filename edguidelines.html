@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>ED Guidelines</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -65,38 +66,28 @@
       background-color: #f1f1f1;
     }
 
-    /* Styles for the tables and download buttons */
-    .table-container {
-      margin-top: 80px;
-    }
-
+    /* Styles for the table */
     table {
-      border-collapse: collapse;
       width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
     }
-
+    
     th, td {
+      padding: 10px;
       border: 1px solid #ddd;
-      padding: 8px;
       text-align: left;
     }
-
+    
     th {
       background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
     }
 
-    .download-button {
-      margin-top: 10px;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    .download-button:hover {
-      background-color: #45a049;
-    }
     </style>
     </head>
     <body>
@@ -115,27 +106,27 @@
           <a href="home.html">Home</a>
         </div>
       </div>
- <div id="table1" style="display: none;">
-          <!-- Dummy table for Mine Rescue Station/RR/RRRT -->
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Column 1</th>
-                  <th>Column 2</th>
-                  <th>Column 3</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Data 1</td>
-                  <td>Data 2</td>
-                  <td>Data 3</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <button class="download-button">Download</button>
-        </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+          </tr>
+          <tr>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+          </tr>
+        </tbody>
+      </table>
     </body>
 </html>
