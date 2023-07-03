@@ -2,12 +2,6 @@
 
 The Centralised Safety Information System (CSIS) is a web-based application that serves as a central repository for safety-related information in the mining industry. It provides various features and functionalities to manage and track safety practices, rescue services, mine data, budgeting, and PME (Planning, Monitoring, and Evaluation).
 
-## Features
-
-- Rescue Services: Manage mine rescue stations, RR (Rescue Room), RRRT (Rescue Room Rescue Team), and manpower for rescue services. Also, track self-contained breathing apparatus (SCBA) usage and availability.
-- Mines Data: Capture and analyze open-cast (OC) and underground (UG) mining data, as well as ISO (International Organization for Standardization) inspection reports.
-- Budget: Monitor and manage capital and revenue budgets, including major heads for both capital and revenue expenditures.
-- PME: Establish and maintain an organizational structure and infrastructure for Planning, Monitoring, and Evaluation (PME) centers.
 
 ## Getting Started
 
