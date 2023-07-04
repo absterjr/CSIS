@@ -229,7 +229,6 @@
                     <option value="C">C</option>
             </select>
         </div>
-
         <div class="form-field">
           <label for="ppv-reported">PPV Reported:</label>
           <input type="number" id="ppv-reported"  step="0.01" placeholder="mm/s" required>
@@ -259,7 +258,6 @@
           <label for="comments">Comments:</label>
           <input type="text" id="comments" placeholder="Comments If Any" required>
         </div>
-
       </div>
 
       <!-- Step 4: Additional Monitoring -->
@@ -267,13 +265,41 @@
         <h3 class="form-step-heading">Additional Monitoring</h3>
         <div class="form-field">
           <label for="conducted-by">Conducted By:</label>
-          <input type="text" id="conducted-by" required>
+          <input type="text" id="conducted-by" placeholder="Name/Agency" required>
         </div>
         <div class="form-field">
           <label for="distance-reported">Distance Reported:</label>
-          <input type="text" id="distance-reported" required>
+          <input type="number" id="distance-reported" step="0.1" placeholder="Distance Reported (m)" required>
         </div>
-        <!-- Add more fields for Step 4 as per your requirement -->
+        <div class="form-field">
+          <label for="distance-measured">Distance Measured:</label>
+          <input type="number" id="distance-measured" step="0.1" placeholder="Distance Measured (m)" required>
+        </div>
+        <div class="form-field">
+          <label for="ppv-reported">PPV Reported:</label>
+          <input type="number" id="ppv-reported"  step="0.01" placeholder="mm/s" required>
+        </div>
+        <div class="form-field">
+          <label for="ppv-frequency">PPV Frequency:</label>
+          <input type="number" id="ppv-frequency" step="0.1" placeholder="Hz" required>
+        </div>
+        <div class="form-field">
+          <label for="ρ-wave-velocity">ρ wave velocity:</label>
+          <input type="number" id="ρ-wave-velocity" step="0.1" placeholder="mm/s" required>
+        </div>
+        <div class="form-field">
+          <label for="airblast-reported">Airblast Reported:</label>
+          <input type="number" id="airblast-reported" step="0.1" placeholder="dB" required>
+        </div>
+      <div class="form-field">
+        <label for="rock-type">Waveform Available</label>
+            <select id="rock-type" required>
+                    <option value="">Select Availability</option>
+                    <option value="yes">YES</option>
+                    <option value="no">NO</option>
+                    <option value="nt">NT</option>
+            </select>
+        </div>
       </div>
 
       <div class="form-navigation">
