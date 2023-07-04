@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Blasting</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-heading {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    .form-step-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .form-field {
+      margin-bottom: 10px;
+    }
+
+    .form-field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .form-field textarea {
+      height: 80px;
+    }
+
+    .form-navigation {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .form-navigation button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-navigation button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2 class="form-heading">Blasting Report</h2>
+    <form id="form">
+      <!-- Step 1: Surface Mine, Blaster, Site -->
+      <div class="form-step active">
+        <h3 class="form-step-heading">Surface Mine Information</h3>
+        <div class="form-field">
+          <label for="surface-mine">Surface Mine:</label>
+          <input type="text" id="surface-mine" placeholder="Mine Name" required>
+        </div>
+        <div class="form-field">
+          <label for="blaster">Blaster:</label>
+          <input type="text" id="blaster" placeholder="Blaster Name" required>
+        </div>
+        <div class="form-field">
+          <label for="site">Site:</label>
+          <input type="number" id="site" step="0.01" placeholder="Site Number" required>
+        </div>
+      </div>
+
+      <!-- Step 2: Blasting Data -->
+      <div class="form-step">
+        <h3 class="form-step-heading">Blasting Data</h3>
+        <div class="form-field">
+          <label for="blast-log">Blast Log:</label>
+          <input type="number" id="blast-log" step="1" placeholder="Blast Number" required>
+        </div>
+        <div class="form-field">
+          <label for="blast-date">Blast Date:</label>
+          <input type="date" id="blast-date" placeholder="dd/mm/yyyy" required>
+        </div>
+        <div class="form-field">
+          <label for="blast-time">Blast Time:</label>
+          <input type="time" id="blast-time" placeholder="hh-mm" required>
+        </div>
+        <div class="form-field">
+          <label for="coal-seam">Coal Seam:</label>
+          <input type="text" id="coal-seam" placeholder="Name or ID" required>
+        </div>
+        <div class="form-field">
+          <label for="nearest-structure">Nearest Structure:</label>
+          <input type="text" id="nearest-structure" placeholder="Name or ID" required>
+        </div>
+        <div class="form-field">
+          <label for="distance-reported">Distance Reported:</label>
+          <input type="number" id="distance-reported" step="0.1" placeholder="Distance Reported" required>
+        </div>
+        <div class="form-field">
+          <label for="distance-measured">Distance Measured:</label>
+          <input type="number" id="distance-measured" step="0.1" placeholder="Distance Measured" required>
+        </div>
+        <div class="form-field">
+          <label for="burden">Burden:</label>
+          <input type="number" id="burden" step="0.1" placeholder="Burden" required>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- Add more fields for Step 2 as per your requirement -->
+      </div>
+
+
+
+
+
+
+      <!-- Step 3: Rock/Explosive Details -->
+      <div class="form-step">
+        <h3 class="form-step-heading">Rock/Explosive Details</h3>
+        <div class="form-field">
+          <label for="charges-per-hole">Charges per Hole:</label>
+          <input type="text" id="charges-per-hole" required>
+        </div>
+        <div class="form-field">
+          <label for="explosive-type">Explosive Type:</label>
+          <input type="text" id="explosive-type" required>
+        </div>
+        <!-- Add more fields for Step 3 as per your requirement -->
+      </div>
+
+      <!-- Step 4: Additional Monitoring -->
+      <div class="form-step">
+        <h3 class="form-step-heading">Additional Monitoring</h3>
+        <div class="form-field">
+          <label for="conducted-by">Conducted By:</label>
+          <input type="text" id="conducted-by" required>
+        </div>
+        <div class="form-field">
+          <label for="distance-reported">Distance Reported:</label>
+          <input type="text" id="distance-reported" required>
+        </div>
+        <!-- Add more fields for Step 4 as per your requirement -->
+      </div>
+
+      <div class="form-navigation">
+        <button type="button" id="prev-button" disabled>Previous</button>
+        <button type="button" id="next-button">Next</button>
+        <button type="submit" id="submit-button" style="display: none;">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const formSteps = Array.from(form.getElementsByClassName('form-step'));
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    const submitButton = document.getElementById('submit-button');
+    let currentStep = 0;
+
+    function showStep(stepIndex) {
+      formSteps.forEach((step, index) => {
+        step.style.display = index === stepIndex ? 'block' : 'none';
+      });
+
+      prevButton.disabled = stepIndex === 0;
+      nextButton.style.display = stepIndex === formSteps.length - 1 ? 'none' : 'inline-block';
+      submitButton.style.display = stepIndex === formSteps.length - 1 ? 'inline-block' : 'none';
+    }
+
+    function goToNextStep() {
+      if (currentStep < formSteps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function goToPreviousStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    function submitForm() {
+      // Implement form submission logic here
+      alert('Form submitted!');
+      return false;
+    }
+
+    prevButton.addEventListener('click', goToPreviousStep);
+    nextButton.addEventListener('click', goToNextStep);
+    form.addEventListener('submit', submitForm);
+
+    showStep(currentStep);
+  </script>
+</body>
+
+</html>
