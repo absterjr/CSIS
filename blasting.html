@@ -5,6 +5,8 @@
   <title>Blasting</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
+      <!-- Form Body and Format -->
+
   body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -95,6 +97,95 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 24px;
+  }
+}
+
+      <!-- Matrix Elements and Position -->
+.matrix-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+
+}
+
+.matrix-container {
+  margin-right: 20px;
+}
+
+.matrix-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+top:40px;
+}
+
+.matrix-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.matrix-hole {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.vertical-line {
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  width: 1px;
+  background-color: black;
+  margin-left: 250px;
+}
+
+.enlarged-hole {
+  float: right;
+  margin-left: 600px;
+}
+
+.enlarged-hole-cylinder {
+  width: 60px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+  position: relative;
+}
+
+.enlarged-hole-labels {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.enlarged-hole-label {
+  display: block;
+}
+
+div {
+  text-align: justify;
+}
+
 </style>
 </head>
 
@@ -102,7 +193,9 @@
   <div class="form-container">
     <h2 class="form-heading">Blasting Report</h2>
     <form id="form">
+
       <!-- Step 1: Surface Mine, Blaster, Site -->
+
       <div class="form-step active">
         <h3 class="form-step-heading">Surface Mine Information</h3>
         <div class="form-field">
@@ -167,6 +260,10 @@
           <input type="number" id="hole-diameter" step="0.1" placeholder="Hole Diameter (mm)" required>
         </div>
         <div class="form-field">
+          <label for="number-of-rows">Number of Rows:</label>
+          <input type="number" id="number-of-rows" step="1" placeholder="Number of Rows" required>
+        </div>
+        <div class="form-field">
           <label for="number-of-holes">Number of Holes:</label>
           <input type="number" id="number-of-holes" step="1" placeholder="Number of Holes" required>
         </div>
@@ -184,7 +281,9 @@
         </div>
       </div>
 
+
       <!-- Step 3: Rock/Explosive Details -->
+
       <div class="form-step">
         <h3 class="form-step-heading">Rock/Explosive Details</h3>
         <div class="form-field">
@@ -261,6 +360,7 @@
       </div>
 
       <!-- Step 4: Additional Monitoring -->
+
       <div class="form-step">
         <h3 class="form-step-heading">Additional Monitoring</h3>
         <div class="form-field">
@@ -308,9 +408,96 @@
         <button type="submit" id="submit-button" style="display: none;">Submit</button>
       </div>
     </form>
-  </div>
+</div>
 
-  <script>
+<div class="matrix-section">
+  <div class="matrix-container">
+    <h3 class="matrix-heading">Visual Representation of Holes</h3>
+    <div class="matrix-labels">
+      <span>Row Spacing: <span id="row-spacing-value"></span></span><br>
+      <span>Column Spacing: <span id="column-spacing-value"></span></span>
+    </div>
+    <div id="matrix-container"></div>
+  </div>
+</div>
+
+<div>
+  <div class="enlarged-hole">
+    <h3>Enlarged Representation of Hole</h3>
+    <div class="enlarged-hole-labels">
+      <span>Hole Diameter: <span id="enlarged-hole-diameter"></span></span><br>
+      <span>Hole Depth: <span id="enlarged-hole-length"></span></span>
+    </div>
+    <div class="enlarged-hole-cylinder" id="enlarged-hole-cylinder"></div>
+  </div>
+<div>
+
+<script>
+  // Get form input elements
+  const numberOfHolesInput = document.getElementById('number-of-holes');
+  const numberOfRowsInput = document.getElementById('number-of-rows');
+  const burdenInput = document.getElementById('burden');
+  const spacingInput = document.getElementById('spacing');
+  const holeDepthInput = document.getElementById('hole-depth');
+  const holeDiameterInput = document.getElementById('hole-diameter');
+  
+  // Get span elements to display updated values
+  const rowSpacingValue = document.getElementById('row-spacing-value');
+  const columnSpacingValue = document.getElementById('column-spacing-value');
+
+  // Listen for input changes
+  numberOfHolesInput.addEventListener('input', generateMatrixDiagram);
+  numberOfRowsInput.addEventListener('input', generateMatrixDiagram);
+  spacingInput.addEventListener('input', generateMatrixDiagram);
+  burdenInput.addEventListener('input', generateMatrixDiagram);
+  holeDepthInput.addEventListener('input', updateEnlargedHole);
+  holeDiameterInput.addEventListener('input', updateEnlargedHole);
+
+// Generate the matrix diagram based on input values
+function generateMatrixDiagram() {
+  const numberOfHoles = Number(numberOfHolesInput.value);
+  const numberOfColumns = Number(numberOfRowsInput.value);
+  const spacing = Number(spacingInput.value);
+  const burden = Number(burdenInput.value);
+
+  rowSpacingValue.textContent = `${spacing} m`;
+  columnSpacingValue.textContent = `${burden} m`;
+
+  const matrixContainer = document.getElementById('matrix-container');
+  matrixContainer.innerHTML = '';
+
+  const rows = Math.ceil(numberOfHoles / numberOfColumns);
+  for (let row = 0; row < rows; row++) {
+    const matrixRow = document.createElement('div');
+    matrixRow.classList.add('matrix-row');
+    for (let col = 0; col < numberOfColumns; col++) {
+      const holeIndex = row + col * rows + 1;
+      if (holeIndex <= numberOfHoles) {
+        const matrixHole = document.createElement('div');
+        matrixHole.classList.add('matrix-hole');
+        matrixHole.innerText = holeIndex;
+        matrixRow.appendChild(matrixHole);
+      }
+    }
+    matrixContainer.appendChild(matrixRow);
+  }
+}
+
+  // Update the enlarged hole based on input values
+  function updateEnlargedHole() {
+    const holeDiameter = Number(holeDiameterInput.value);
+    const holeDepth = Number(holeDepthInput.value);
+
+    const enlargedHoleDiameterLabel = document.getElementById('enlarged-hole-diameter');
+    enlargedHoleDiameterLabel.textContent = `${holeDiameter} mm`;
+
+    const enlargedHoleLengthLabel = document.getElementById('enlarged-hole-length');
+    enlargedHoleLengthLabel.textContent = `${holeDepth} m`;
+  }
+
+  // Initialize the matrix diagram
+  generateMatrixDiagram();
+
     const form = document.getElementById('form');
     const formSteps = Array.from(form.getElementsByClassName('form-step'));
     const prevButton = document.getElementById('prev-button');
